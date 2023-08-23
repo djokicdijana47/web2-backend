@@ -21,6 +21,12 @@ namespace OnlineShopWebAPI.Services
         public void CancelOrder(string orderId)
         {
             Order canceledOrder = repository.Order.GetItemById(orderId);
+            
+            foreach(var product in canceledOrder.OrderedProducts)
+            {
+                repository.Product.GetItemById(product.Id).Quantity++;
+            }
+
             canceledOrder.OrderStatus = OrderStatus.Canceled;
             repository.Save();
         }

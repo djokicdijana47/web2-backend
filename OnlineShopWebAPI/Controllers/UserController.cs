@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebAPI.DataTransferObject;
 using OnlineShopWebAPI.Interface;
@@ -89,5 +90,21 @@ namespace OnlineShopWebAPI.Controllers
         {
             return Ok(_userService.UpdateAccount(account));
         }
+
+        [HttpPost("updatePassword")]
+        public IActionResult UpdatePassword(string email, string oldPassword, string newPassword, string repeatedPassword) 
+        {
+            bool res = _userService.UpdatePassword(email, oldPassword, newPassword, repeatedPassword);
+            if (res)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }   
+
+        }
+
     }
 }

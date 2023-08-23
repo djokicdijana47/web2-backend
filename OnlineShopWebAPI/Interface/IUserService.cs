@@ -12,5 +12,8 @@ namespace OnlineShopWebAPI.Interface
         string UploadImage(IFormFile imageFile, string email);
         void BlockSeller(string sellerId);
         UserDto GetUserProfile(string email);
+
+        bool UpdatePassword(string email, string oldPassword, string newPassword, string repeatedPassword);
+
     }
 }

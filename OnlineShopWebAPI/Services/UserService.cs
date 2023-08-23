@@ -58,6 +58,27 @@ namespace OnlineShopWebAPI.Services
             return mapper.Map<UserDto>(repository.Users.ModifyItem(mapper.Map<User>(UserDto)));
         }
 
+        public bool UpdatePassword(string email, string oldPassword, string newPassword, string repeatedPassword)
+        {
+            User user = repository.Users.GetItems().FirstOrDefault(x => x.Email == email);
+
+            if(user != null)
+            {
+                if (BCrypt.Net.BCrypt.Verify(oldPassword, user.Password))
+                {
+                    if(newPassword.Equals(repeatedPassword))
+                    {
+                        user.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
+                        repository.Users.ModifyItem(user);
+                        repository.Save();
+                        return true;
+                    }
+                }
+                return false;
+            }
+            return false;
+        }
+
         public string UploadImage(IFormFile imageFile, string email)
         {
             try
