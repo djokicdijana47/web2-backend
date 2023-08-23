@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebAPI.DataTransferObject;
 using OnlineShopWebAPI.Interface;
-using System.Data;
 
 namespace OnlineShopWebAPI.Controllers
 {

@@ -1,4 +1,3 @@
-using OnlineShopWebAPI;
 
 namespace OnlineShopWebAPI
 {

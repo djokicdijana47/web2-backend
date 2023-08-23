@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using OnlineShopWebAPI.DAL;
 using OnlineShopWebAPI.DataTransferObject;
 using OnlineShopWebAPI.Interface;

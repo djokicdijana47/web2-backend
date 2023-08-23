@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebAPI.DataTransferObject;
 using OnlineShopWebAPI.Interface;
-using System.Data;
 
 namespace OnlineShopWebAPI.Controllers
 {
@@ -41,6 +39,7 @@ namespace OnlineShopWebAPI.Controllers
             _orderService.CheckCompletedOrders();
             return Ok(_orderService.GetShopperNonCanceledOrders(email));
         }
+
         [HttpGet("getCanceledOrders")]
         [Authorize(Roles = "shopper")]
         public IActionResult GetCanceledOrders(string email)
